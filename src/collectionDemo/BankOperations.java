@@ -27,7 +27,7 @@ public static void main(String[] args) {
 		Bank bank = new Bank();
 		
 	
-		boolean status = true;
+	
 		int c=1;
 
 		while(c>=1) {
