@@ -18,42 +18,30 @@ public class deSerialization {
 		//System.out.println("salary "+e.salary);
 		Scanner s=new Scanner(System.in);
 		System.out.println("Enter Your UserId");
-		String userId=s.nextLine();
+		String userId=s.next();
 		
 		//System.out.println(userId);
-		
-		
-		
-		
-		if(userId.equals(e.name)) {
-			System.out.println("Enter Your Password");
-			String pwd=s.next();
-			System.out.println(pwd);
-			System.out.println(e.password);
-			
-			
-			boolean x=pwd.equals("s");
-			System.out.println(x);
-			
-			
-			
-			
-		
-			
-			if( pwd.equals(e.password)){
-				System.out.println("--------------------------Welcome to Lockme!-------------------------------");
+		if(userId.equals(e.name))
+		{
+			System.out.println("enter password");
+			String pwd=s.next();		
+			if(pwd.equals(e.password))
+			{
+				System.out.println("Welcome");
 				
 			}
 			else {
-				System.out.println("Not a valid , If you are a new User Please register");
+				System.out.println("Sorry Wrong Password");
 			}
-
 			
 			
 		}
 		else {
-			System.out.println("Not a valid UserId\n If you are a new User Please register");
+			System.out.println("Incorrect UserId");
 		}
+		
+		
+		
 		
 	} catch (IOException | ClassNotFoundException e) {
 		// TODO Auto-generated catch block

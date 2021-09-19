@@ -8,11 +8,13 @@ import java.io.ObjectOutputStream;
 public class demo {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		employee e=new employee(4,"goutam",45444.45, "ho");
+		employee e=new employee(4,"goutam",45444.45, "Sonu@114");
 		//to convert object into byte
 		//create a file
+		//System.out.println(e.password);
+		String S="file-db";
 		try {
-			FileOutputStream file=new FileOutputStream("file-db.txt");
+			FileOutputStream file=new FileOutputStream(S+".txt");
 			ObjectOutputStream out=new ObjectOutputStream(file);
 			out.writeObject(e);
 			out.close();
