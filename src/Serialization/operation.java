@@ -30,9 +30,9 @@ public class operation {
 				System.out.println("Enter your UserId");
 				String UserId = sc.next();
 				int index = Collections.binarySearch(fileList, UserId);
-				System.out.println(fileList);
+				
 				System.out.println(index);
-				index=1;
+				
 				if (index == -1) {
 					fileList.add(UserId);
 					
@@ -77,7 +77,7 @@ public class operation {
 					String pwd1 = sc.next();
 					if (pwd1.equals(e.Password)) {
 
-						userOperations.Operations();
+						userOperations.Operations(e.userId);
 					} else {
 						System.out.println("Wrong Password");
 					}
