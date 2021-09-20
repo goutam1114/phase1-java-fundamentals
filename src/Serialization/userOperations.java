@@ -15,10 +15,13 @@ public class userOperations {
 		Credentials.getcred(UserId);
 		break;
 		case 2:System.out.println("Retrieve credentilas");
+		Credentials.fetchcred(UserId);
 		
 		break;
 		case 3:System.out.println("Delete credentilas");
+		Credentials.deleteCreds(UserId);
 		break;
+		
 		}
 	}
 	

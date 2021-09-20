@@ -47,13 +47,12 @@ public class operation {
 		details d = new details(UserId, pwd, email);
 		FileOutputStream file;
 		try {
-			file = new FileOutputStream(UserId + ".txt");
 			FileOutputStream file1 = new FileOutputStream(UserId + ".txt");
 
-			ObjectOutputStream out = new ObjectOutputStream(file);
+			ObjectOutputStream out = new ObjectOutputStream(file1);
 			out.writeObject(d);
 			out.close();
-			file.close();
+			file1.close();
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -85,7 +84,7 @@ public class operation {
 		} catch (java.io.FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			System.out.println("Not  a Registered User ");
-			e1.printStackTrace();
+			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
