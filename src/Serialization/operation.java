@@ -16,26 +16,55 @@ import java.util.Scanner;
 public class operation {
 
 	public static void main(String[] args) {
+	 
 		int c = 1;
-		int choice = welcome();
+		System.out.println("==========================================");
+		System.out.println("*					*");
+		System.out.println("*     Welcome To LockMe.com		*");
+		System.out.println("* A Personal Digital Locker For You*");
+		System.out.println("*					*");
+		System.out.println("==========================================");
+		
 		Scanner sc = new Scanner(System.in);
-		while (c >= 1) {
+		
+			int choice = welcome();
+			
 
+            while(c==1) {
 			switch (choice) {
 			case 1:
 				register();
+				System.out.println("Do you Want to Login 1-YES 2-NO"); 
+				int g=sc.nextInt();
+				if(g==1) {
+					choice=2;
+				}
+				else {
+					c=2;
+					
+				}
+				
 				break;
 			case 2:
 				login();
 				break;
+			 default:System.out.println("Enter Valid Option");
+			 choice = welcome();
+				break;
 
 			}
-			System.out.println("Do You Want To Continue");
-			c = sc.nextInt();
-		}
+			System.out.println("To Exit Press 2 ,To Coninue Press 1");
+			c=sc.nextInt();
+            }
+		
 	}
 
 	public static void register() {
+		System.out.println("==========================================");
+		System.out.println("*					*");
+		System.out.println("*   WELCOME TO REGISTRATION PAGE	*");
+		System.out.println("*					*");
+		System.out.println("==========================================");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter your UserId");
 		String UserId = sc.next();
@@ -62,6 +91,11 @@ public class operation {
 	}
 
 	public static void login() {
+		System.out.println("==========================================");
+		System.out.println("*					*");
+		System.out.println("*   WELCOME TO LOGIN PAGE	 *");
+		System.out.println("*					*");
+		System.out.println("==========================================");
 		Scanner sc = new Scanner(System.in);
 		FileInputStream file1;
 		try {
@@ -96,16 +130,10 @@ public class operation {
 	}
 
 	public static int welcome() {
-		String s = "***********************************Welcome to Lockme************************************";
-		String d = "*********************************a digital lock for you*********************************";
-		String a="******************************************************************************************";
-		System.out.println(a);
-		System.out.println(s);
-		System.out.println(d);
-		System.out.println(a);
-
 		System.out.println("1.Registration\n2.Login");
 		System.out.println("Enter your Choice");
+
+		
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
 		return choice;

@@ -19,7 +19,7 @@ public class Credentials implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public String Domain;
+	public  String Domain;
 	public String UserName;
 	public String Password;
 
@@ -87,12 +87,17 @@ public class Credentials implements Serializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ArrayList<String> l = new ArrayList<String>();
-		l.add(domainName);
+		
+		ArrayList<File> l = new ArrayList<File>();
+		l.add(new File(domainName));
 		
 		try {
+			
+			
 			FileOutputStream file = new FileOutputStream(UserId+"creds.txt");
 			ObjectOutputStream out = new ObjectOutputStream(file);
+			
+
 			out.writeObject(l);
 			out.close();
 			file.close();
@@ -109,19 +114,31 @@ public class Credentials implements Serializable {
 	}
 
 	public static void fetchcred(String UserId) {
+		System.out.println("==========================================");
+		System.out.println("*					*");
+		System.out.println("*   WELCOME TO DIGITAL LOCKER 	 *");
+		System.out.println("*   YOUR CREDS ARE 	 *");
+		System.out.println("*					*");
+		System.out.println("==========================================");
+		
+	
 		try {
 			FileInputStream file=new  FileInputStream(UserId+"creds.txt");
 			ObjectInputStream out=new ObjectInputStream(file);
 			 ArrayList e = (ArrayList) out.readObject();
+				out.close();
+				file.close();
+
+			
 			
 			Collections.sort(e);
-			System.out.println("Select Domain to get Credentals");
+			//System.out.println("Select Domain to get Credentals");
 
-			for (int i = 0; i < e.size(); i++) {
-				int c = i + 1;
-				System.out.println(c + "." + e.get(i));
-			}
-			creds(e, UserId);
+			//for (int i = 0; i < e.size(); i++) {
+			//int c = i + 1;
+			//System.out.println(c + "." + e.get(i));
+	//	}
+			creds( UserId);
 
 		} catch (FileNotFoundException e) {
 			System.out.println("No data is available");
@@ -134,18 +151,22 @@ public class Credentials implements Serializable {
 			e.printStackTrace();
 		}
 	}
+		
 
-	public static void creds(ArrayList<String> s, String UserId) {
+	public static void creds( String UserId) {
 		Scanner sc = new Scanner(System.in);
-		int ch = sc.nextInt();
+		System.out.println("Enter the Domain Name");
+		String domainName=sc.next();
 
 		try {
-			FileInputStream file = new FileInputStream(UserId + "." + s.get(ch - 1) + ".txt");
+			FileInputStream file = new FileInputStream(UserId + "." + domainName + ".txt");
 			ObjectInputStream out = new ObjectInputStream(file);
 			Credentials c = (Credentials) out.readObject();
-			System.out.println(c.Domain);
-			System.out.println(c.UserName);
-			System.out.println(c.Password);
+			System.out.println("Domain Name Is :"+c.Domain);
+     		System.out.println("User Name Of "+c.Domain+" Is: "+c.UserName);
+     		System.out.println("Password of  "+c.Domain+" Is: "+c.Password);
+
+		
 
 
 			
@@ -161,43 +182,19 @@ public class Credentials implements Serializable {
 
 	}
 	public static void deleteCreds(String UserId) {
-		try {
-			FileInputStream file=new  FileInputStream(UserId+"creds.txt");
-			ObjectInputStream out=new ObjectInputStream(file);
-			 ArrayList e = (ArrayList) out.readObject();
-			 
-			
-			Collections.sort(e);
-			System.out.println("Select Domain to get Credentals");
-
-			for (int i = 0; i < e.size(); i++) {
-				int c = i + 1;
-				System.out.println(c + "." + e.get(i));
-			}
+		
 			System.out.println("Enter the domain you want to delete");
 			Scanner sc=new Scanner(System.in);
-			int ch=sc.nextInt();
-			e.remove(ch-1);
-			System.out.println("Remaining domains");
-			for (int i = 0; i < e.size(); i++) {
-				int c = i + 1;
-				System.out.println(c + "." + e.get(i));
+			String Domain=sc.next();
+			File f=new File(UserId + "." + Domain + ".txt");
+			boolean x=f.delete();
+			if(x) {
+				System.out.println("deleted "+Domain);
 			}
 			
+			
 
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
-		
-				
 
 		
 	}
